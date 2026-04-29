@@ -35,9 +35,3 @@ async def time(
 
     return round(time_hours, 2)
 
-
-def time_sync(distance_km: float, speed_kmh: float, terrain_type: str) -> float:
-    time_hours = distance_km / speed_kmh
-    if terrain_type == "город":
-        time_hours *= 1.2
-    return round(time_hours, 2)

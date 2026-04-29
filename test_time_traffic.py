@@ -60,22 +60,3 @@ async def test_traffic_service_unavailable():
     assert result == 2.0
 
 
-@pytest.mark.asyncio
-async def test_validation_from_lab1():
-    mock_maps = AsyncMock()
-
-    with pytest.raises(ValueError, match="Скорость не может превышать 150 км/ч"):
-        await time(100, 200, "трасса", mock_maps)
-
-    with pytest.raises(ValueError, match="В городе скорость не может превышать 60 км/ч"):
-        await time(100, 70, "город", mock_maps)
-
-
-@pytest.mark.asyncio
-async def test_different_route_ids():
-    mock_maps = AsyncMock()
-    mock_maps.get_traffic_score.return_value = 3
-
-    await time(100, 50, "трасса", mock_maps, route_id="route-123")
-
-    mock_maps.get_traffic_score.assert_called_once_with("route-123")

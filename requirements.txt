@@ -1,0 +1,8 @@
+behave==1.2.6
+flask
+flask-cors
+pytest
+pytest-playwright
+pytest-asyncio
+allure-pytest
+requests
